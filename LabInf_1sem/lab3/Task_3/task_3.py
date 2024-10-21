@@ -7,19 +7,18 @@ class Txt:
         for i in open(text):
             self.siteOfCostBitcoin += i
 
-    def printTxt(self):
-        s = ''.join(self.siteOfCostBitcoin)
-        return s
+    def get_Txt(self):
+        return ''.join(self.siteOfCostBitcoin)
 
 
 class Parser:
     def __init__(self):
-        Pars = re.search(r'(Bitcoin.+|Биткоин.+|Btc.+)(...........[0-9.,]+)', Txt().printTxt())
+        Pars = re.search(r'(Bitcoin.*₽)([\d,.]+\s)', Txt().get_Txt())
         if Pars:
             self.CostBit = Pars.group(2)
 
-    def printBitcoin(self):
+    def print_Bitcoin(self):
         return self.CostBit
 
 
-print(Parser().printBitcoin())
+print(Parser().print_Bitcoin())

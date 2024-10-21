@@ -7,7 +7,7 @@ class Str:
         for i in open(num):
             self.st += i
 
-    def print1(self) -> str:
+    def get_test(self) -> str:
         return self.st
 
 
@@ -18,18 +18,17 @@ class Emoji:
         mouth = ('(', ')', 'P', '|', "\\", '/', 'O', '=')
         self.res = eyes[isu % 6] + nose[isu % 4] + mouth[isu % 8]
 
-    def print2(self) -> str:
+    def get_Emoji(self) -> str:
         return self.res
 
 
 class Re(Emoji, Str):
-    REG = Emoji().print2()
-    reg = re.findall(REG, Str().print1())
+    REG = Emoji().get_Emoji()
+    reg = re.findall(REG, Str().get_test())
 
-    def print(self) -> int:
+    def num_Of_Emojis(self) -> int:
         return len(self.reg)
 
 
-print('')
-print(f'Your message: {Str().print1()}\n' + f'Your Emoji: {Emoji().print2()}\n' + f'The number of your emojis: \
-{Re().print()}')
+print(f'Your message: {Str().get_test()}\n' + f'Your Emoji: {Emoji().get_Emoji()}\n' + f'The number of your emojis: \
+{Re().num_Of_Emojis()}')
